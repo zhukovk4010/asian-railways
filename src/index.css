@@ -47,3 +47,26 @@ table {
 * {
   box-sizing: border-box;
 }
+
+/* Подключение шрифтов */
+
+@font-face {
+	font-family: 'Roboto';
+	font-style: 'normal';
+	font-weight: 100;
+	src: url("./fonts/Roboto-Thin.ttf") format("woff");
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-style: 'normal';
+	font-weight: 300;
+	src: url("./fonts/Roboto-Regular.ttf") format("woff");
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-style: 'normal';
+	font-weight: 900;
+	src: url("./fonts/Roboto-Black.ttf") format("woff");
+}
