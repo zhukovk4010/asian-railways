@@ -49,6 +49,20 @@ table {
   box-sizing: border-box;
 }
 
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+	background-color: rgb(141, 99, 65);
+}
+
+@media screen and (max-width: 900px) {
+	.mapboxgl-ctrl-top-right {
+		margin-top: 150px;
+	}
+
+	.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+		background-color: rgb(141, 99, 65);
+	}
+}
+
 /* Подключение шрифтов */
 
 @font-face {

@@ -1,9 +1,12 @@
 //Компонент карты из библиотеки Mapbox
 
 //Импорты
-import React from "react"
+import React, { useEffect } from "react"
 import mapboxgl from "mapbox-gl"
-import "mapbox-gl/dist/mapbox-gl.css"; 
+import "mapbox-gl/dist/mapbox-gl.css"
+
+import YearsScale from "../years-scale/years-scale"
+import styles from './map-box-map.module.css'
 
 //Типы
 type MapboxMapPropsType = {
@@ -18,25 +21,42 @@ const MapboxMap = ({
     onCreated,
     onLoaded,
     onRemoved
-    }: MapboxMapPropsType) => {
-    
+}: MapboxMapPropsType) => {
+
+    //Состояние панели навигации по годам
+    const [value, setValue] = React.useState(9)
+
     //Состояние карты
     const [map, setMap] = React.useState<mapboxgl.Map>()
 
     //Node карты
     const mapNode = React.useRef(null)
 
+    //Список годов, для отображения
+    const years = [
+        1875,
+        1890,
+        1905,
+        1920,
+        1935,
+        1950,
+        1965,
+        1980,
+        1995,
+        2010,
+    ]
+
     React.useEffect(() => {
         const node = mapNode.current
 
         //Если window или node не найдем, то ничего не делаем
         if (typeof window === "undefined" || node === null) return
-        
+
         //Иначе создаем карту
         const mapboxMap = new mapboxgl.Map({
             container: node,
-                  accessToken: process.env.REACT_APP_PUBLIC_MAPBOX_TOKEN,
-                  style: "mapbox://styles/zhukvok4010/cknks0z4523fm17ny7xc28ien",
+            accessToken: process.env.REACT_APP_PUBLIC_MAPBOX_TOKEN,
+            style: "mapbox://styles/zhukvok4010/cknks0z4523fm17ny7xc28ien",
             ...initialOptions,
         });
 
@@ -79,7 +99,15 @@ const MapboxMap = ({
                 },
                 'land-structure-polygon'
             );
+
+            //Добавление кнопки изменения масштаба карты
+            mapboxMap.addControl(new mapboxgl.NavigationControl());
+
+            //Добавление масштаба на карту
+            const scale = new mapboxgl.ScaleControl();
+            mapboxMap.addControl(scale)
         })
+        
 
         //Удаление карты при демонтировании компонента
         return () => {
@@ -87,9 +115,38 @@ const MapboxMap = ({
             setMap(undefined)
             if (onRemoved) onRemoved()
         }
-    }, []) 
+    }, [])
 
-    return <div ref={mapNode} style={{width: '100%', height: '100%'}} />
+    React.useEffect(() => {
+            cheangeYear(value)
+    }, [value])
+
+    //Изменение отображения данных на карте (дорог и названий жд)
+    const cheangeYear = (value: number) => {
+        if (map) {
+            let filters = ['==', 'data_open', value]
+            // 1875-1950
+            map.setFilter('local-railways-1875-1950', filters)
+            // // //1965-1980
+            map.setFilter('local-railways-1965-1980', filters)
+            // // //1980-1995
+            map.setFilter('local-railways-1995-2010', filters)
+            //названия жд
+            map.setFilter('points-other-names', filters)
+        }
+    }
+
+    return (
+        <>
+            <div ref={mapNode} style={{ width: '100%', height: '100%' }} />
+            <h2 className={styles.activeYear}>{years[value]}</h2>
+            <section className={styles.yearsScaleContainer}>
+                <h3 className={styles.scaleName}>Временная шкала</h3>
+                <YearsScale value={value} setValue={setValue} />
+            </section>
+
+        </>
+    )
 }
 
 

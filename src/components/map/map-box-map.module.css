@@ -1,0 +1,44 @@
+.yearsScaleContainer {
+    width: 60%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.scaleName {
+    color: rgb(78, 56, 37);
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-weight: 300;
+    text-shadow: 1px 1px 1px white;
+    margin-bottom: 5px;
+}
+
+.activeYear {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 100px;
+    display: block;
+    text-align: center;
+    font-family: 'Roboto';
+    color: rgb(141, 99, 65);
+    font-size: 40px;
+    font-weight: 900;
+    text-shadow: 3px 3px 3px white;
+}
+
+@media screen and (max-width: 900px) {
+    .scaleName {
+        font-size: 16px;
+    }
+
+    .activeYear {
+        margin-top: 75px;
+        margin-right: 10px;
+    }
+}

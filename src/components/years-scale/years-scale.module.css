@@ -1,0 +1,42 @@
+.scale {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 16px;
+    border: 1px solid rgb(192, 145, 107);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(192, 145, 107);
+    margin-bottom: 10px;
+}
+
+.scale::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: rgb(141, 99, 65);
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+}
+
+.scaleYears {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-items: center;
+}
+
+.scaleYears label {
+    font-family: 'Roboto';
+    color: rgb(78, 56, 37);
+    text-shadow: 1px 1px 1px white;
+
+}
+
+/* Для мобильной версии */
+@media screen and (max-width: 900px) {
+    .scale {
+        margin-bottom: 30px;
+    }
+
+    .scaleYears {
+        display: none;
+    }
+}

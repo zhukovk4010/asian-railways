@@ -26,10 +26,9 @@ const App = () => {
 			</div>
 			<div className={styles.map}>
 				<MapboxMap
-					initialOptions={{ center: [80, 55], zoom: 3.2 }}
+					initialOptions={{ center: [80, 55], zoom: 3.2, minZoom: 3, maxZoom: 6.99 }}
 					onLoaded={handleMapLoading} />
 			</div>
-
 			{/* При загрузке карты показываем лоадер */}
 			{loading && <Loader />}
 
