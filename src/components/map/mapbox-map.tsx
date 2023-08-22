@@ -45,7 +45,41 @@ const MapboxMap = ({
 
         if (onCreated) onCreated(mapboxMap)
 
+        //Событие при загрузке карты, вызывается однажды, можно передать в props
         if (onLoaded) mapboxMap.once('load', () => onLoaded(mapboxMap))
+
+        //Настройки карты, что показывать на ней
+        mapboxMap.on('load', () => {
+
+            //Добавление слоя с рельефом дна
+            mapboxMap.addSource('10m-bathymetry-81bsvj', {
+                type: 'vector',
+                url: 'mapbox://mapbox.9tm8dx88'
+            });
+
+            mapboxMap.addLayer(
+                {
+                    'id': '10m-bathymetry-81bsvj',
+                    'type': 'fill',
+                    'source': '10m-bathymetry-81bsvj',
+                    'source-layer': '10m-bathymetry-81bsvj',
+                    'layout': {},
+                    'paint': {
+                        'fill-outline-color': 'hsla(337, 82%, 62%, 0)',
+                        'fill-color': [
+                            'interpolate',
+                            ['cubic-bezier', 0, 0.5, 1, 0.5],
+                            ['get', 'DEPTH'],
+                            200,
+                            '#add8eb',
+                            9000,
+                            '#15659f'
+                        ]
+                    }
+                },
+                'land-structure-polygon'
+            );
+        })
 
         //Удаление карты при демонтировании компонента
         return () => {
@@ -53,7 +87,7 @@ const MapboxMap = ({
             setMap(undefined)
             if (onRemoved) onRemoved()
         }
-    }, [])
+    }, []) 
 
     return <div ref={mapNode} style={{width: '100%', height: '100%'}} />
 }

@@ -30,6 +30,7 @@ const App = () => {
 					onLoaded={handleMapLoading} />
 			</div>
 
+			{/* При загрузке карты показываем лоадер */}
 			{loading && <Loader />}
 
 		</main>
