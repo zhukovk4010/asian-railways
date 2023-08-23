@@ -40,6 +40,13 @@
     height: 100vh;
 }
 
+.buttonsPanel {
+    z-index: 2;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+}
+
 /* Для мобильной версии */
 @media screen and (max-width: 900px) {
     .imgTrain {

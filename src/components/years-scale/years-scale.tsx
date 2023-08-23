@@ -3,12 +3,14 @@
 //Импорты
 import styles from './years-scale.module.css'
 
+//Типы
 type YearsScalePropsType = {
     value: number
     setValue: React.Dispatch<React.SetStateAction<number>>
 }
 
-const YearsScale = ({value, setValue}:YearsScalePropsType) => {
+
+const YearsScale = ({ value, setValue }: YearsScalePropsType) => {
     return (
         <div>
             <input

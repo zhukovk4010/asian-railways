@@ -4,6 +4,7 @@
 import loader from '../../images/loader.gif'
 import styles from './loader.module.css'
 
+
 const Loader = () => {
     return (
         <div className={styles.loaderContainer}>

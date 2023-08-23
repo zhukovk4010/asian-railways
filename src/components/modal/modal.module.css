@@ -1,0 +1,77 @@
+.modalWindow {
+    font-family: 'Roboto';
+    z-index: 3;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid rgb(141, 99, 65);
+    border-radius: 20px;
+    max-width: 800px;
+}
+
+.title {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.modalWindow img {
+    width: 600px;
+    height: 80%;
+    margin: 10px;
+    margin-top: 50px;
+}
+
+.buttonClose {
+    font-size: 20px;
+    font-weight: 900;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 100px;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(141, 99, 65);
+    box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+    cursor: pointer;
+}
+
+.nameMap {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.description {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.developer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.scientificAdviser {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 30px; 
+}
+
+@media screen and (max-width: 900px) {
+    .modalWindow {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .modalWindow img {
+        width: 90%;
+        height: auto;
+    }
+}

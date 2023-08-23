@@ -1,11 +1,12 @@
 //Компонент карты из библиотеки Mapbox
 
 //Импорты
-import React, { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import mapboxgl from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 
 import YearsScale from "../years-scale/years-scale"
+
 import styles from './map-box-map.module.css'
 
 //Типы
@@ -16,6 +17,7 @@ type MapboxMapPropsType = {
     onRemoved?(): void
 }
 
+
 const MapboxMap = ({
     initialOptions = {},
     onCreated,
@@ -24,13 +26,13 @@ const MapboxMap = ({
 }: MapboxMapPropsType) => {
 
     //Состояние панели навигации по годам
-    const [value, setValue] = React.useState(9)
+    const [value, setValue] = useState(9)
 
     //Состояние карты
-    const [map, setMap] = React.useState<mapboxgl.Map>()
+    const [map, setMap] = useState<mapboxgl.Map>()
 
     //Node карты
-    const mapNode = React.useRef(null)
+    const mapNode = useRef(null)
 
     //Список годов, для отображения
     const years = [
@@ -46,7 +48,7 @@ const MapboxMap = ({
         2010,
     ]
 
-    React.useEffect(() => {
+    useEffect(() => {
         const node = mapNode.current
 
         //Если window или node не найдем, то ничего не делаем
@@ -58,7 +60,7 @@ const MapboxMap = ({
             accessToken: process.env.REACT_APP_PUBLIC_MAPBOX_TOKEN,
             style: "mapbox://styles/zhukvok4010/cknks0z4523fm17ny7xc28ien",
             ...initialOptions,
-        });
+        })
 
         //Меняем состояние карты
         setMap(mapboxMap)
@@ -101,13 +103,12 @@ const MapboxMap = ({
             );
 
             //Добавление кнопки изменения масштаба карты
-            mapboxMap.addControl(new mapboxgl.NavigationControl());
+            mapboxMap.addControl(new mapboxgl.NavigationControl())
 
             //Добавление масштаба на карту
-            const scale = new mapboxgl.ScaleControl();
+            const scale = new mapboxgl.ScaleControl()
             mapboxMap.addControl(scale)
         })
-        
 
         //Удаление карты при демонтировании компонента
         return () => {
@@ -117,8 +118,8 @@ const MapboxMap = ({
         }
     }, [])
 
-    React.useEffect(() => {
-            cheangeYear(value)
+    useEffect(() => {
+        cheangeYear(value)
     }, [value])
 
     //Изменение отображения данных на карте (дорог и названий жд)

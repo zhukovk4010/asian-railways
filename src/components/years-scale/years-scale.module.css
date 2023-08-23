@@ -6,6 +6,7 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgb(192, 145, 107);
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .scale::-webkit-slider-thumb {
