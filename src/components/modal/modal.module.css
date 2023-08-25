@@ -22,7 +22,7 @@
     width: 600px;
     height: 80%;
     margin: 10px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .buttonClose {
@@ -40,6 +40,8 @@
     background-color: rgb(141, 99, 65);
     box-shadow: 0 0 0 2px rgba(0,0,0,.1);
     cursor: pointer;
+    color: black;
+    padding: 0;
 }
 
 .nameMap {
@@ -67,11 +69,22 @@
 @media screen and (max-width: 900px) {
     .modalWindow {
         width: 100%;
-        height: 100vh;
+        height: 100%;
     }
 
     .modalWindow img {
         width: 90%;
         height: auto;
+    }
+    
+}
+
+@media screen and (max-height: 500px) {
+    .modalWindow {
+        max-width: 100%;
+        text-align: center;
+    }
+    .modalWindow img {     
+        width: 35%;
     }
 }

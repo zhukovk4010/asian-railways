@@ -1,10 +1,10 @@
 .mapContiner {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .mapName {
-    z-index: 1;
+    z-index: 3;
     position: fixed;
     background-color: aliceblue;
     border: 1px solid rgb(141, 99, 65);
@@ -37,14 +37,15 @@
 
 .map {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .buttonsPanel {
     z-index: 2;
-    position: absolute;
+    position: fixed;
     right: 10px;
     top: 50%;
+    transform: translate(0, -50%);
 }
 
 /* Для мобильной версии */
@@ -66,5 +67,11 @@
 
     .mapName h1 {
         font-weight: 300;
+    }
+}
+@media screen and (max-height: 500px) {
+    .buttonsPanel {
+        top: 160px;
+        left: 10px;
     }
 }

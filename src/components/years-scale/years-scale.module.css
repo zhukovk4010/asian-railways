@@ -7,6 +7,7 @@
     box-shadow: 5px 5px 5px rgb(192, 145, 107);
     margin-bottom: 10px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .scale::-webkit-slider-thumb {
@@ -19,9 +20,9 @@
 
 .scaleYears {
     width: auto;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(10, 1fr);
-    justify-items: center;
+    justify-content: space-between;
 }
 
 .scaleYears label {
@@ -34,7 +35,7 @@
 /* Для мобильной версии */
 @media screen and (max-width: 900px) {
     .scale {
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
 
     .scaleYears {

@@ -11,6 +11,8 @@ import Modal from './components/modal/modal'
 import styles from './App.module.css'
 import trainPictures from './images/train-pictures.png'
 import legend from './images/legend.png'
+import informationIcon from './images/information-icon.png'
+import legendIcon from './images/legend-icon.png'
 
 
 const App = () => {
@@ -56,8 +58,8 @@ const App = () => {
 			{/* При загрузке карты показываем лоадер */}
 			{loading && <Loader />}
 			<div className={styles.buttonsPanel}>
-				<ModalButton sign={'l'} setActiveModal={onOpenLegend} />
-				<ModalButton sign={'i'} setActiveModal={onOpenInformation} />
+				<ModalButton sign={legendIcon} setActiveModal={onOpenLegend} />
+				<ModalButton sign={informationIcon} setActiveModal={onOpenInformation} />
 			</div>
 			{/* Модальные окна */}
 			{activeLegendModal && <Modal title='' img={legend} onClose={onClose} />}

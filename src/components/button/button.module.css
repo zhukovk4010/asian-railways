@@ -1,14 +1,17 @@
 .button {
-    display: block;
-    margin-top: 10px;
-    width: 30px;
-    height: 30px;
+    display: grid;
+    height: 29px;
+    width: 29px;
+    margin-bottom: 5px;
     background: rgb(141, 99, 65);
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 0 2px rgba(0,0,0,.1);
-    font-size: 20px;
-    font-family: 'Roboto';
-    outline: none;
-    cursor: pointer;
+    padding: 0;
+}
+
+.button img {
+    width: 80%;
+    justify-self: center;
+    align-self: center;
 }
